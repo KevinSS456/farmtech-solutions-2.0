@@ -6,13 +6,13 @@
 
 ## 👥 Integrantes
 
-| Nome | RM |
-|------|----|
-| Thiese Novaes | |
-| João Vitor | |
-| Talles Duran | |
-| Kevin Santiago | |
-| Renan de Souza | |
+| Nome |
+|------|
+| Thiese Novaes |
+| João Vitor |
+| Talles Duran |
+| Kevin Santiago |
+| Renan de Souza |
 
 ---
 
