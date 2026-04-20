@@ -187,8 +187,8 @@ python clima.py
 
 ## 🎥 Vídeo Demonstrativo
 
-https://youtube.com/link-do-video](https://youtu.be/OxzF6pPU_3E
-> [Clique aqui para assistir ao vídeo no YouTube]([https://youtube.com/link-do-video](https://youtu.be/OxzF6pPU_3E))
+[[https://youtube.com/link-do-video](https://youtu.be/OxzF6pPU_3E](https://youtu.be/OxzF6pPU_3E)](https://www.youtube.com/watch?v=OxzF6pPU_3E)
+> [Clique aqui para assistir ao vídeo no YouTube]([[https://youtube.com/link-do-video](https://youtu.be/OxzF6pPU_3E)](https://youtu.be/OxzF6pPU_3E))
 
 ---
 
