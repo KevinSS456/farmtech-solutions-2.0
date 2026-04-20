@@ -1,4 +1,4 @@
-# 🌱 FarmTech Solutions — Sistema de Irrigação Inteligente
+<img width="962" height="873" alt="image" src="https://github.com/user-attachments/assets/9a1d7900-8a5f-4d16-bee3-eaa90545e7c9" /># 🌱 FarmTech Solutions — Sistema de Irrigação Inteligente
 
 ![GitHub](https://img.shields.io/badge/FIAP-Inteligência%20Artificial-blue)
 ![GitHub](https://img.shields.io/badge/Fase-2-green)
@@ -70,7 +70,7 @@ Suas necessidades ideais são:
 
 ## 🖼️ Circuito no Wokwi
 
-> Insira aqui o print do circuito montado no Wokwi
+<img width="962" height="873" alt="image" src="https://github.com/user-attachments/assets/c4d1a031-b65e-45a7-9c42-4ec2f617643a" />
 
 ![Circuito Wokwi](imagens/circuito.png)
 
