@@ -200,10 +200,10 @@ Dashboard desenvolvido em **Python + Streamlit** para visualização dos dados d
 
 ```bash
 pip install streamlit plotly pandas
-streamlit run dashboard.py
+python -m streamlit run dashboard.py
 ```
 
-> ⚠️ O arquivo `sensores_farmtech_v2.csv` deve estar na mesma pasta que o `dashboard.py`.
+> ⚠️ Deve rodar o script dentro da pasta do arquivo.
 
 ### Funcionalidades:
 
@@ -219,7 +219,11 @@ streamlit run dashboard.py
 
 > Print do dashboard:
 
-![Dashboard](imagens/dashboard_print.png)
+![Dashboard]<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/950c7549-266e-4ad0-ad2f-490671a0754b" />
+)
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/9f0897d2-f38f-47fe-820a-95483ee33f29" />
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/567d8a3c-69d6-4122-b205-6fb2fc7b6b0e" />
+
 
 ---
 
