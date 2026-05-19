@@ -167,10 +167,17 @@ python clima.py
 
 ## 🗄️ Fase 3 — Banco de Dados Oracle
 
-Os dados dos sensores foram importados no banco de dados **Oracle** da FIAP
-usando o **Oracle SQL Developer**.
+Realizamos a instalação do Oracle SQL Developer(windows), através do link 
+https://www.oracle.com/database/sqldeveloper/technologies/download/.
+![Download Oracle](imagens/Oracle_Download.png)
 
-### Configuração da conexão:
+Após a instalação, descompactamos o arquivo e executamos o programa SQLDEVELOPER.
+![EXE Oracle](imagens/Oracle_exe.png)
+
+Ao abrir o programa, clicamos no icone "+" (Nova conexão) em verde.
+![Conexão Oracle](imagens/Oracle_Conexao.png)
+
+Estabelecemos uma conexão com o banco de dados Oracle:
 
 | Campo | Valor |
 |-------|-------|
@@ -179,18 +186,36 @@ usando o **Oracle SQL Developer**.
 | SID | ORCL |
 | Usuário | RM + número (ex: RM12345) |
 | Senha | Data de nascimento (DDMMYY) |
+![Conexão DB Oracle](imagens/Oracle_Db.png)
 
-### Consulta utilizada:
+Depois, testamos a conexão para garantir sucesso.
+![Conexão Success Oracle](imagens/Oracle_Success.png)
 
-```sql
-SELECT * FROM SENSORES_FARMTECH;
-```
+Assim que conectado, clicamos no campo "Tabelas (Filtrado)", e selecionamos o campo
+"Importar Dados"
+![Import Oracle](imagens/Oracle_Import.png)
 
-> Print do banco de dados:
+Importamos os dados coletados da Fase 2, clicando em "Procurar..."
+![Import Csv Oracle](imagens/Oracle_Import_Csv.png)
 
-![Banco Oracle](imagens/oracle_print.png)
+Clicamos em "Próximo", e editamos o nome da nossa tabela para "SENSORES_FARMTECH" no campo "Nome da Tabela", garantindo que não possua espaços, nem caracteres especiais ou mais que 30 caracteres.
+![Rename Table Oracle](imagens/Oracle_Rename.png)
 
----
+Novamente clicamos em "Próximo", e importamos todos os dados coletados no arquivo csv, selecionando "Próximo" mais uma vez.
+![Filter Table Oracle](imagens/Oracle_no_Filter.png)
+
+Após, temos a opção de alterar o nome das colunas e seu tipo de dado.
+Clicamos novamente em "Próximo"
+![Column Table Oracle](imagens/Oracle_Column.png)
+
+Por fim, clique em "próximo", e depois "finalizar" e aparecerá uma mensagem informando que a tarefa foi bem-sucedida.
+![Import Table Success Oracle](imagens/Oracle_Import_Success.png)
+
+Realizamos a consulta SQL na tabela importada;
+![Query Oracle](imagens/Oracle_Query.png)
+
+A consulta foi realizada com sucesso, permitindo validar que os dados da Fase 2 foram importados corretamente para o banco Oracle.
+
 
 ## 📊 Fase 3 — Dashboard Interativo
 
@@ -352,7 +377,7 @@ Após o treinamento e avaliação dos modelos supervisionados, foi obtido o segu
 
 Os melhores desempenhos foram obtidos pelos algoritmos **Random Forest** e **Decision Tree**, ambos com **90% de acurácia**.
 
-Esse resultado indica que o problema possui padrões de decisão mais compatíveis com algoritmos baseados em árvores, capazes de capturar relações não lineares entre nutrientes do solo, temperatura, umidade e índice de chuva.
+Esse resultado indica que o problema possua padrões de decisão mais compatíveis com algoritmos baseados em árvores, capazes de capturar relações não lineares entre nutrientes do solo, temperatura, umidade e índice de chuva.
 
 A **Logistic Regression** e o **SVM** apresentaram desempenho intermediário (**77,5%**), sugerindo que modelos mais lineares ou dependentes de separação geométrica simples não conseguiram representar tão bem a complexidade dos dados agrícolas.
 
