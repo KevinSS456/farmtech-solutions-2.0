@@ -433,7 +433,6 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
 
 ## 🎥 Vídeos Demonstrativos
 
-<<<<<<< HEAD
 | Fase | Link |
 |------|------|
 | Fase 2 — ESP32 + Wokwi | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
