@@ -461,7 +461,7 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
 | Fase | Link |
 |------|------|
 | Fase 2 — ESP32 + Wokwi | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
-| Fase 3 — Banco de dados | [Assistir no YouTube](#) *(a adicionar)* |
+| Fase 3 — Banco de dados | [Assistir no YouTube](https://youtu.be/jpHLyaU5JCU) |
 | Fase 3.1 - modelagem — Dashboard e ML | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM) |
 
 ---
