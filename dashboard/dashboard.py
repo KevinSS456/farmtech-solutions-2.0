@@ -3,6 +3,11 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).parent
+CAMINHO_CSV = BASE_DIR / "sensores_farmtech_v2.csv"
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -155,7 +160,7 @@ st.markdown("""
 # ─── CARREGAR DADOS ───────────────────────────────────────────────────────────
 @st.cache_data
 def carregar_dados():
-    df = pd.read_csv("sensores_farmtech_v2.csv", parse_dates=["timestamp"])
+    df = pd.read_csv(CAMINHO_CSV, parse_dates=["timestamp"])
     return df
 
 df = carregar_dados()

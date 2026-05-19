@@ -1,0 +1,20 @@
+                    Modelos escolhidos
+
+
+. Logistic Regression
+
+. Random Forest
+
+. Decision Tree
+
+. SVM
+
+. KNN
+
+                            Comparação
+
+RANDOM FOREST: 0.9000
+DECISION TREE: 0.9000
+LOGISTIC REGRESSION: 0.7750
+SVM: 0.7750
+KNN: 0.6750
