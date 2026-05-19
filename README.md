@@ -1,4 +1,4 @@
-# 🌱 FarmTech Solutions — Sistema de Irrigação Inteligente
+># 🌱 FarmTech Solutions — Sistema de Irrigação Inteligente
 
 ![GitHub](https://img.shields.io/badge/FIAP-Inteligência%20Artificial-blue)
 ![GitHub](https://img.shields.io/badge/Fase-3-brightgreen)
@@ -8,13 +8,13 @@
 
 ## 👥 Integrantes
 
-| Nome | RM |
-|------|----|
-| Thiese Novaes | |
-| João Vitor | |
-| Talles Duran | |
-| Kevin Santiago | |
-| Renan de Souza | |
+| Nome |
+|------|
+| Thiese Novaes |
+| João Vitor |
+| Talles Duran |
+| Kevin Santiago |
+| Renan de Souza |
 
 ---
 
@@ -75,7 +75,7 @@ Suas necessidades ideais são:
 
 ## 🖼️ Circuito no Wokwi
 
-> Insira aqui o print do circuito montado no Wokwi
+<img width="562" height="473" alt="image" src="https://github.com/user-attachments/assets/c4d1a031-b65e-45a7-9c42-4ec2f617643a" />
 
 ![Circuito Wokwi](imagens/circuito.png)
 
@@ -276,10 +276,15 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
 
 ## 🎥 Vídeos Demonstrativos
 
+<<<<<<< HEAD
 | Fase | Link |
 |------|------|
 | Fase 2 — ESP32 + Wokwi | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
 | Fase 3 — Dashboard | [Assistir no YouTube](#) *(a adicionar)* |
+=======
+[[https://youtube.com/link-do-video](https://youtu.be/OxzF6pPU_3E](https://youtu.be/OxzF6pPU_3E)](https://www.youtube.com/watch?v=OxzF6pPU_3E)
+> [Clique aqui para assistir ao vídeo no YouTube]([[https://youtube.com/link-do-video](https://youtu.be/OxzF6pPU_3E)](https://youtu.be/OxzF6pPU_3E))
+>>>>>>> 323c29c387c7a33fb33e359604d2bb6189168286
 
 ---
 
