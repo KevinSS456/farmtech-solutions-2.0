@@ -706,5 +706,5 @@ python ML/ml_farmtech_regressao.py
 ---
 
 <p align="center">
-  FarmTech Solutions © 2025 — FIAP Inteligência Artificial — Fases 2 & 3
+  FarmTech Solutions © 2025 — FIAP Inteligência Artificial — Fases 2 & 3 & 4
 </p>
