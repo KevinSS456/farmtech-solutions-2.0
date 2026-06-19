@@ -25,7 +25,7 @@ from sklearn.pipeline import Pipeline
 # CONFIGURAÇÕES
 # ──────────────────────────────────────────────────────────────
 
-CAMINHO_CSV  = "./dashboard/sensores_farmtech_v2.csv"
+CAMINHO_CSV  = "../dashboard/sensores_farmtech_v2.csv"
 OUTPUT_DIR   = "./ML/outputs"
 RANDOM_STATE = 42
 TEST_SIZE    = 0.2
