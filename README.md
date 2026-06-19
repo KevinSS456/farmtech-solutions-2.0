@@ -444,6 +444,7 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
  ┃    ┗ 📄 3_📈_IrAlem2_Tendencias.py
  ┣ 📂 python
  ┃ ┣ 📄 clima.py                    → Integração com API OpenWeather
+ ┃ ┣ 📄 ingestao_sensores.py        
  ┣ 📂 ML
  ┃ ┣ 📂 csvs
  ┃ ┃ ┗ 📄 sensores_farmtech_v2.csv  → Base de dados dos sensores
@@ -483,7 +484,7 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
 | Fase 2 — ESP32 + Wokwi                | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
 | Fase 3 — Banco de dados               | [Assistir no YouTube](https://youtu.be/jpHLyaU5JCU)                |
 | Fase 3.1 - modelagem — Dashboard e ML | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM)                |
-
+| Fase 4 - Ir Além 1 — Ingestão automática Oracle | [Assistir no YouTube](https://youtu.be/MsFykLMK8zw)      |
 ---
 
 ---
@@ -744,6 +745,27 @@ diretamente — o Streamlit gerencia a navegação a partir do `dashboard.py`.
 
 ---
 
+
+## 🗄️ Ir Além 1 — Ingestão Automática de Dados IoT no Oracle
+
+Como extensão da Fase 3 (onde a importação dos dados no Oracle foi feita manualmente via SQL Developer),
+foi desenvolvido um script de **ingestão automática** que elimina a necessidade de importação manual.
+
+### O que o script faz
+
+1. Conecta no banco Oracle da FIAP usando credenciais lidas de um arquivo `.env` (boa prática de segurança).
+2. Cria a tabela `SENSORES_FARMTECH_IOT` automaticamente, caso ela ainda não exista.
+3. Realiza a **população inicial**, carregando o histórico do `sensores_farmtech_v2.csv` — executada apenas
+   uma vez, na primeira execução.
+4. Entra em um **loop contínuo**: a cada 5 segundos, gera uma nova leitura simulada (representando uma nova
+   captura dos sensores de campo) e insere automaticamente no banco, sem nenhuma intervenção manual.
+
+### Como executar
+
+```bash
+pip install oracledb pandas python-dotenv --break-system-packages
+```
+
 ---
 
 ## 📚 Tecnologias Utilizadas
@@ -761,7 +783,8 @@ diretamente — o Streamlit gerencia a navegação a partir do `dashboard.py`.
 | Wokwi                | Simulação do circuito                 |
 | OpenWeather API      | Dados meteorológicos em tempo real    |
 | Oracle SQL Developer | Banco de dados relacional             |
-
+| python-oracledb      | Conexão Python ↔ Oracle (Ir Além 1)   |
+| python-dotenv        | Gerenciamento de credenciais via .env |
 ---
 
 <p align="center">
