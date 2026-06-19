@@ -5,16 +5,28 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from pathlib import Path
 
+import os
+
+
+
 
 BASE_DIR = Path(__file__).parent
 CAMINHO_CSV = BASE_DIR / "sensores_farmtech_v2.csv"
+
+@st.cache_data
+def carregar_dados(mtime):
+    df = pd.read_csv(CAMINHO_CSV, parse_dates=["timestamp"])
+    return df
+
+mtime = os.path.getmtime(CAMINHO_CSV)
+df = carregar_dados(mtime)
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="FarmTech Solutions",
     page_icon="🌱",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded" 
 )
 
 # ─── ESTILOS ──────────────────────────────────────────────────────────────────
@@ -23,9 +35,6 @@ st.markdown("""
     html, body, [class*="css"] {
         font-family: 'Cambria Math', Cambria, Georgia, serif;
     }
-
-    [data-testid="stSidebar"]      { display: none; }
-    [data-testid="collapsedControl"] { display: none; }
 
     .main { background-color: #0a0d14; }
 

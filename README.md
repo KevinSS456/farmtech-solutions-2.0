@@ -1,4 +1,4 @@
-># 🌱 FarmTech Solutions — Sistema de Irrigação Inteligente
+> # 🌱 FarmTech Solutions — Sistema de Irrigação Inteligente
 
 ![GitHub](https://img.shields.io/badge/FIAP-Inteligência%20Artificial-blue)
 ![GitHub](https://img.shields.io/badge/Fase-4-brightgreen)
@@ -8,11 +8,11 @@
 
 ## 👥 Integrantes
 
-| Nome |
-|------|
-| Thiese Novaes |
-| João Vitor |
-| Talles Duran |
+| Nome           |
+| -------------- |
+| Thiese Novaes  |
+| João Vitor     |
+| Talles Duran   |
 | Kevin Santiago |
 | Renan de Souza |
 
@@ -42,38 +42,38 @@ umidade do solo, pH e rendimento estimado, com recomendações automáticas de i
 O café foi escolhido por ser uma das culturas mais importantes do Brasil.
 Suas necessidades ideais são:
 
-| Parâmetro | Valor Ideal | Valor Simulado |
-|-----------|-------------|----------------|
-| pH do solo | 6,0 a 6,5 | 5,5 a 7,0 (via LDR) |
-| Umidade do solo | 60% a 80% | DHT22 |
-| Nitrogênio (N) | ≥ 80 mg/kg | Simulado numericamente |
-| Fósforo (P) | ≥ 30 mg/kg | Simulado numericamente |
-| Potássio (K) | ≥ 100 mg/kg | Simulado numericamente |
+| Parâmetro       | Valor Ideal | Valor Simulado         |
+| --------------- | ----------- | ---------------------- |
+| pH do solo      | 6,0 a 6,5   | 5,5 a 7,0 (via LDR)    |
+| Umidade do solo | 60% a 80%   | DHT22                  |
+| Nitrogênio (N)  | ≥ 80 mg/kg  | Simulado numericamente |
+| Fósforo (P)     | ≥ 30 mg/kg  | Simulado numericamente |
+| Potássio (K)    | ≥ 100 mg/kg | Simulado numericamente |
 
 ---
 
 ## 🔧 Componentes Utilizados
 
-| Componente | Função Real | Função no Projeto |
-|------------|-------------|-------------------|
-| ESP32 DevKit | Microcontrolador | Cérebro do sistema |
-| 3 Botões Verdes | Sensores NPK | Simula níveis de N, P e K |
-| LDR + Resistor 10kΩ | Sensor de luz | Simula o pH do solo |
-| DHT22 | Sensor de umidade do ar | Simula umidade do solo |
-| Módulo Relé | Atuador | Simula a bomba d'água |
+| Componente          | Função Real             | Função no Projeto         |
+| ------------------- | ----------------------- | ------------------------- |
+| ESP32 DevKit        | Microcontrolador        | Cérebro do sistema        |
+| 3 Botões Verdes     | Sensores NPK            | Simula níveis de N, P e K |
+| LDR + Resistor 10kΩ | Sensor de luz           | Simula o pH do solo       |
+| DHT22               | Sensor de umidade do ar | Simula umidade do solo    |
+| Módulo Relé         | Atuador                 | Simula a bomba d'água     |
 
 ---
 
 ## 🔌 Pinagem do Circuito
 
-| Componente | Pino ESP32 |
-|------------|------------|
-| Botão Nitrogênio (N) | GPIO 12 |
-| Botão Fósforo (P) | GPIO 13 |
-| Botão Potássio (K) | GPIO 14 |
-| LDR (pH) | GPIO 35 |
-| DHT22 (Umidade) | GPIO 15 |
-| Relé (Bomba) | GPIO 26 |
+| Componente           | Pino ESP32 |
+| -------------------- | ---------- |
+| Botão Nitrogênio (N) | GPIO 12    |
+| Botão Fósforo (P)    | GPIO 13    |
+| Botão Potássio (K)   | GPIO 14    |
+| LDR (pH)             | GPIO 35    |
+| DHT22 (Umidade)      | GPIO 15    |
+| Relé (Bomba)         | GPIO 26    |
 
 ---
 
@@ -112,6 +112,7 @@ A bomba é **DESLIGADA** quando qualquer condição abaixo for verdadeira:
 ```
 
 ### 🔘 Funcionamento dos botões NPK:
+
 - **1º clique** → Nutriente **presente** ✅
 - **2º clique** → Nutriente **ausente** ❌
 
@@ -136,10 +137,10 @@ se há previsão de chuva na cidade configurada.
 
 ### Valores aceitos pelo Serial Monitor:
 
-| Valor | Significado | Ação |
-|-------|-------------|------|
-| `0` | Sem chuva | Irrigação liberada ✅ |
-| `1` | Chuva prevista | Irrigação suspensa 🌧️ |
+| Valor | Significado    | Ação                  |
+| ----- | -------------- | --------------------- |
+| `0`   | Sem chuva      | Irrigação liberada ✅ |
+| `1`   | Chuva prevista | Irrigação suspensa 🌧️ |
 
 ### Exemplo de resultado do clima.py:
 
@@ -171,7 +172,7 @@ python clima.py
 
 ## 🗄️ Fase 3 — Banco de Dados Oracle
 
-Realizamos a instalação do Oracle SQL Developer(windows), através do link 
+Realizamos a instalação do Oracle SQL Developer(windows), através do link
 https://www.oracle.com/database/sqldeveloper/technologies/download/.
 ![Download Oracle](imagens/Oracle_Download.png)
 
@@ -183,13 +184,14 @@ Ao abrir o programa, clicamos no icone "+" (Nova conexão) em verde.
 
 Estabelecemos uma conexão com o banco de dados Oracle:
 
-| Campo | Valor |
-|-------|-------|
-| Host | oracle.fiap.com.br |
-| Porta | 1521 |
-| SID | ORCL |
-| Usuário | RM + número (ex: RM12345) |
-| Senha | Data de nascimento (DDMMYY) |
+| Campo   | Valor                       |
+| ------- | --------------------------- |
+| Host    | oracle.fiap.com.br          |
+| Porta   | 1521                        |
+| SID     | ORCL                        |
+| Usuário | RM + número (ex: RM12345)   |
+| Senha   | Data de nascimento (DDMMYY) |
+
 ![Conexão DB Oracle](imagens/Oracle_Db.png)
 
 Depois, testamos a conexão para garantir sucesso.
@@ -220,7 +222,6 @@ Realizamos a consulta SQL na tabela importada;
 
 A consulta foi realizada com sucesso, permitindo validar que os dados da Fase 2 foram importados corretamente para o banco Oracle.
 
-
 ## 📊 Fase 3 — Dashboard Interativo
 
 Dashboard desenvolvido em **Python + Streamlit** para visualização dos dados dos sensores.
@@ -236,15 +237,15 @@ python -m streamlit run dashboard.py
 
 ### Funcionalidades:
 
-| Seção | Descrição |
-|-------|-----------|
-| 📡 Leitura Mais Recente | Cards com umidade, pH, N, P, K e chuva |
-| 🚿 Status da Irrigação | Bomba ligada/desligada + sugestões automáticas |
-| 📆 Visão Semanal | Médias de todas as variáveis + ativações da bomba por semana (S1–S4) |
-| 💧 Umidade & pH | Série temporal com faixas ideais |
-| 🌿 NPK | Evolução de N, P, K com limiares mínimos |
-| 🚿 Irrigação | Barras por dia + distribuição de estados |
-| 📊 Correlações | Scatter plot interativo entre variáveis |
+| Seção                   | Descrição                                                            |
+| ----------------------- | -------------------------------------------------------------------- |
+| 📡 Leitura Mais Recente | Cards com umidade, pH, N, P, K e chuva                               |
+| 🚿 Status da Irrigação  | Bomba ligada/desligada + sugestões automáticas                       |
+| 📆 Visão Semanal        | Médias de todas as variáveis + ativações da bomba por semana (S1–S4) |
+| 💧 Umidade & pH         | Série temporal com faixas ideais                                     |
+| 🌿 NPK                  | Evolução de N, P, K com limiares mínimos                             |
+| 🚿 Irrigação            | Barras por dia + distribuição de estados                             |
+| 📊 Correlações          | Scatter plot interativo entre variáveis                              |
 
 > Print do dashboard:
 
@@ -252,7 +253,6 @@ python -m streamlit run dashboard.py
 )
 <img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/9f0897d2-f38f-47fe-820a-95483ee33f29" />
 <img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/567d8a3c-69d6-4122-b205-6fb2fc7b6b0e" />
-
 
 ## 🤖 Fase 4 — Machine Learning para Predição de Culturas Agrícolas
 
@@ -287,6 +287,7 @@ mango
 ```
 
 ### Pipeline de Tratamento dos Dados
+
 Foi implementado um pipeline completo de preparação dos dados:
 
 ✅ carregamento do dataset <br>
@@ -297,6 +298,7 @@ Foi implementado um pipeline completo de preparação dos dados:
 ✅ aplicação de regras de validação agronômica <br>
 
 ### Análise Exploratória (EDA)
+
 Foram geradas análises exploratórias para compreender o comportamento dos dados:
 
 . distribuição das culturas <br>
@@ -319,15 +321,16 @@ Por que escolhi eses: Para se ter melhor ideia de predições e análises, assim
 ### Modelos de Machine Learning Utilizados
 
 Foram treinados e comparados 5 algoritmos supervisionados:
-| Modelo              | Finalidade                   |
+| Modelo | Finalidade |
 | ------------------- | ---------------------------- |
-| Logistic Regression | baseline estatístico         |
-| Random Forest       | ensemble robusto             |
-| Decision Tree       | árvore interpretável         |
-| SVM                 | separação por hiperplano     |
-| KNN                 | classificação por vizinhança |
+| Logistic Regression | baseline estatístico |
+| Random Forest | ensemble robusto |
+| Decision Tree | árvore interpretável |
+| SVM | separação por hiperplano |
+| KNN | classificação por vizinhança |
 
 ### Pipeline de Treinamento
+
 ```text
 Dataset
    ↓
@@ -345,6 +348,7 @@ Predição
    ↓
 Avaliação comparativa
 ```
+
 Configuração:
 
         - treino: 80%
@@ -367,13 +371,13 @@ Cada modelo foi avaliado com:
 
 Após o treinamento e avaliação dos modelos supervisionados, foi obtido o seguinte desempenho:
 
-| Modelo | Accuracy |
-|--------|----------|
-| Random Forest | 90.00% |
-| Decision Tree | 90.00% |
-| Logistic Regression | 77.50% |
-| SVM | 77.50% |
-| KNN | 67.50% |
+| Modelo              | Accuracy |
+| ------------------- | -------- |
+| Random Forest       | 90.00%   |
+| Decision Tree       | 90.00%   |
+| Logistic Regression | 77.50%   |
+| SVM                 | 77.50%   |
+| KNN                 | 67.50%   |
 
 ---
 
@@ -413,16 +417,16 @@ Regras aplicadas:
 
 Base com **200 registros simulados** ao longo de janeiro de 2025:
 
-| Coluna | Descrição | Faixa |
-|--------|-----------|-------|
-| `timestamp` | Data e hora da leitura | Jan/2025 |
-| `umidade` | Umidade do solo (%) | 25 – 95% |
-| `ph` | pH do solo | 5,5 – 7,0 |
-| `nitrogenio` | Nitrogênio (mg/kg) | 10 – 140 |
-| `fosforo` | Fósforo (mg/kg) | 5 – 145 |
-| `potassio` | Potássio (mg/kg) | 10 – 205 |
-| `chuva` | Previsão de chuva (0/1) | Binário |
-| `irrigacao` | Bomba acionada (0/1) | Binário |
+| Coluna       | Descrição               | Faixa     |
+| ------------ | ----------------------- | --------- |
+| `timestamp`  | Data e hora da leitura  | Jan/2025  |
+| `umidade`    | Umidade do solo (%)     | 25 – 95%  |
+| `ph`         | pH do solo              | 5,5 – 7,0 |
+| `nitrogenio` | Nitrogênio (mg/kg)      | 10 – 140  |
+| `fosforo`    | Fósforo (mg/kg)         | 5 – 145   |
+| `potassio`   | Potássio (mg/kg)        | 10 – 205  |
+| `chuva`      | Previsão de chuva (0/1) | Binário   |
+| `irrigacao`  | Bomba acionada (0/1)    | Binário   |
 
 ---
 
@@ -470,15 +474,13 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
 
 ## 🎥 Vídeos Demonstrativos
 
-| Fase | Link |
-|------|------|
-| Fase 2 — ESP32 + Wokwi | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
-| Fase 3 — Banco de dados | [Assistir no YouTube](https://youtu.be/jpHLyaU5JCU) |
-| Fase 3.1 - modelagem — Dashboard e ML | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM) |
+| Fase                                  | Link                                                               |
+| ------------------------------------- | ------------------------------------------------------------------ |
+| Fase 2 — ESP32 + Wokwi                | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
+| Fase 3 — Banco de dados               | [Assistir no YouTube](https://youtu.be/jpHLyaU5JCU)                |
+| Fase 3.1 - modelagem — Dashboard e ML | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM)                |
 
 ---
-
-
 
 ---
 
@@ -541,11 +543,11 @@ rendimento = (
 
 Foram treinados e comparados **3 algoritmos** para cada variável-alvo:
 
-| Modelo | Tipo | Finalidade |
-|--------|------|------------|
-| Random Forest Regressor | Ensemble não-linear | Captura relações complexas entre sensores |
-| Regressão Linear | Linear | Baseline interpretável |
-| Regressão Polinomial (grau 2 + Ridge) | Não-linear | Captura interações entre features |
+| Modelo                                | Tipo                | Finalidade                                |
+| ------------------------------------- | ------------------- | ----------------------------------------- |
+| Random Forest Regressor               | Ensemble não-linear | Captura relações complexas entre sensores |
+| Regressão Linear                      | Linear              | Baseline interpretável                    |
+| Regressão Polinomial (grau 2 + Ridge) | Não-linear          | Captura interações entre features         |
 
 ---
 
@@ -598,11 +600,11 @@ Cada modelo foi avaliado com:
 
 ### 🏆 Resultados por Target
 
-| Target | Melhor Modelo | MAE | RMSE | R² |
-|--------|--------------|-----|------|----|
-| Umidade do Solo (%) | Random Forest | 5.79 | 6.87 | 0.72 |
-| pH do Solo | Regressão Linear | 0.42 | 0.46 | -0.12 |
-| Rendimento Estimado | Regressão Linear | 6.53 | 7.71 | 0.61 |
+| Target              | Melhor Modelo    | MAE  | RMSE | R²    |
+| ------------------- | ---------------- | ---- | ---- | ----- |
+| Umidade do Solo (%) | Random Forest    | 5.79 | 6.87 | 0.72  |
+| pH do Solo          | Regressão Linear | 0.42 | 0.46 | -0.12 |
+| Rendimento Estimado | Regressão Linear | 6.53 | 7.71 | 0.61  |
 
 ---
 
@@ -626,31 +628,31 @@ aplicação de calcário e acidez da chuva — variáveis não presentes nos sen
 
 Com base nas previsões dos modelos, o script gera recomendações automáticas de irrigação e manejo:
 
-| Condição Prevista | Recomendação |
-|-------------------|-------------|
-| Umidade < 60% | 💧 IRRIGAR — volume estimado em L/m² |
-| Umidade > 80% | ⚠️ NÃO irrigar — solo encharcado |
-| Chuva prevista | 🌧️ SUSPENDER irrigação |
-| pH < 6.0 | 🧪 Aplicar calcário dolomítico |
-| pH > 6.5 | 🧪 Aplicar enxofre agrícola |
-| N < 80 mg/kg | 🌿 Aplicar ureia ou nitrato de amônio |
-| P < 30 mg/kg | 🌿 Aplicar superfosfato simples |
-| K < 100 mg/kg | 🌿 Aplicar cloreto de potássio |
+| Condição Prevista | Recomendação                          |
+| ----------------- | ------------------------------------- |
+| Umidade < 60%     | 💧 IRRIGAR — volume estimado em L/m²  |
+| Umidade > 80%     | ⚠️ NÃO irrigar — solo encharcado      |
+| Chuva prevista    | 🌧️ SUSPENDER irrigação                |
+| pH < 6.0          | 🧪 Aplicar calcário dolomítico        |
+| pH > 6.5          | 🧪 Aplicar enxofre agrícola           |
+| N < 80 mg/kg      | 🌿 Aplicar ureia ou nitrato de amônio |
+| P < 30 mg/kg      | 🌿 Aplicar superfosfato simples       |
+| K < 100 mg/kg     | 🌿 Aplicar cloreto de potássio        |
 
 ---
 
 ### 📊 Gráficos Gerados
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `01_correlacao.png` | Mapa de correlação entre todas as variáveis |
-| `02_predito_vs_real.png` | Valores preditos vs reais para os 3 targets |
-| `03_residuos.png` | Análise de resíduos (dispersão) |
-| `04_comparacao_modelos.png` | RMSE e R² comparados entre os 3 modelos |
-| `05_feature_importance.png` | Importância de cada feature no modelo de umidade |
-| `06_serie_temporal_umidade.png` | Série temporal: umidade real vs predita |
-| `07_tendencia_rendimento.png` | Tendência de rendimento ao longo de janeiro/2025 |
-| `08_histograma_residuos.png` | Distribuição dos resíduos por target |
+| Arquivo                         | Descrição                                        |
+| ------------------------------- | ------------------------------------------------ |
+| `01_correlacao.png`             | Mapa de correlação entre todas as variáveis      |
+| `02_predito_vs_real.png`        | Valores preditos vs reais para os 3 targets      |
+| `03_residuos.png`               | Análise de resíduos (dispersão)                  |
+| `04_comparacao_modelos.png`     | RMSE e R² comparados entre os 3 modelos          |
+| `05_feature_importance.png`     | Importância de cada feature no modelo de umidade |
+| `06_serie_temporal_umidade.png` | Série temporal: umidade real vs predita          |
+| `07_tendencia_rendimento.png`   | Tendência de rendimento ao longo de janeiro/2025 |
+| `08_histograma_residuos.png`    | Distribuição dos resíduos por target             |
 
 ---
 
@@ -684,24 +686,77 @@ python ML/ml_farmtech_regressao.py
 
 > ⚠️ Deve rodar o script a partir da raiz do projeto.
 
+---
+
+## 🖥️ Dashboard Streamlit — Estrutura Multipage
+
+Para integrar visualmente os dados de sensores (Fase 3) com as previsões de Machine Learning (Fase 4),
+o dashboard foi reorganizado em formato **multipage** do Streamlit, separando cada fase em sua própria página
+sem misturar as lógicas.
+
+### Estrutura de Arquivos
+
+```
+dashboard/
+
+┣ dashboard.py                      → Página inicial (Sensores — Fase 3)
+┣ sensores_farmtech_v2.csv          → Base de dados dos sensores
+┗ pages/
+┣ 2_🤖_ML_Regressao_Fase4.py        → Métricas, correlação e previsões (Parte 1)
+┗ 3_📈_IrAlem2_Tendencias.py        → Tendências de produtividade (Ir Além 2)
+```
+
+### Páginas do Dashboard
+
+| Página                     | Conteúdo                                                                                                                                                               |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📡 Sensores (Fase 3)       | Leituras em tempo real, status da bomba, visão semanal, histórico (umidade, pH, NPK) e correlações                                                                     |
+| 🤖 ML — Regressão (Fase 4) | Métricas de desempenho (MAE, RMSE, R²) por variável, mapa de correlação, previsto vs real, e sistema de recomendações automáticas baseado nas previsões do modelo      |
+| 📈 Tendências (Ir Além 2)  | Indicador de tendência de rendimento (últimos 7 dias vs período anterior), evolução do rendimento real vs previsto, médias por semana e relação entre NPK e rendimento |
+
+### Fonte de Dados da Página de ML
+
+A página de Machine Learning consome diretamente o arquivo gerado pelo pipeline de regressão:
+
+```
+ML/outputs/previsoes_farmtech.csv
+```
+
+Esse arquivo contém, para cada leitura, o valor real e o valor previsto pelo modelo (`umidade_pred`, `ph_pred`,
+`rendimento_pred`), permitindo a comparação direta entre previsão e realidade no dashboard.
+
+> ⚠️ Sempre que o pipeline `ml_farmtech_regressao.py` é executado novamente, o dashboard reflete
+> automaticamente os novos valores ao ser recarregado — não é necessário alterar nenhum código do dashboard.
+
+### Como Executar o Dashboard Completo
+
+```bash
+cd dashboard
+streamlit run dashboard.py
+```
+
+O menu lateral exibirá automaticamente as 3 páginas. Não é necessário rodar os arquivos dentro de `pages/`
+diretamente — o Streamlit gerencia a navegação a partir do `dashboard.py`.
+
+---
 
 ---
 
 ## 📚 Tecnologias Utilizadas
 
-| Tecnologia | Uso |
-|------------|-----|
-| C/C++ | Programação do ESP32 |
-| Python | Integração climática + Dashboard + ML |
-| Streamlit | Framework do dashboard |
-| Plotly | Gráficos interativos |
-| Pandas | Manipulação dos dados |
-| Scikit-Learn | Modelos de regressão (Fase 4) |
-| Matplotlib / Seaborn | Gráficos do pipeline de ML |
-| Joblib | Exportação dos modelos treinados |
-| Wokwi | Simulação do circuito |
-| OpenWeather API | Dados meteorológicos em tempo real |
-| Oracle SQL Developer | Banco de dados relacional |
+| Tecnologia           | Uso                                   |
+| -------------------- | ------------------------------------- |
+| C/C++                | Programação do ESP32                  |
+| Python               | Integração climática + Dashboard + ML |
+| Streamlit            | Framework do dashboard                |
+| Plotly               | Gráficos interativos                  |
+| Pandas               | Manipulação dos dados                 |
+| Scikit-Learn         | Modelos de regressão (Fase 4)         |
+| Matplotlib / Seaborn | Gráficos do pipeline de ML            |
+| Joblib               | Exportação dos modelos treinados      |
+| Wokwi                | Simulação do circuito                 |
+| OpenWeather API      | Dados meteorológicos em tempo real    |
+| Oracle SQL Developer | Banco de dados relacional             |
 
 ---
 
