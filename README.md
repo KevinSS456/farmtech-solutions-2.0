@@ -62,13 +62,16 @@ A cultura escolhida foi o **café**, por ser relevante para o agronegócio brasi
 
 ## Vídeos demonstrativos
 
-| Entrega                   | Link                                                               |
-| ------------------------- | ------------------------------------------------------------------ |
-| Fase 2 — ESP32 + Wokwi    | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
-| Fase 3 — Banco de dados   | [Assistir no YouTube](https://youtu.be/jpHLyaU5JCU)                |
-| Fase 3.1 — Dashboard e ML | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM)                |
-| Fase 4 — Ir Além 1        | [Assistir no YouTube](https://youtu.be/MsFykLMK8zw)                |
-| Fase 4 — Ir Além 2        | [Assistir no YouTube](https://youtu.be/Y9oP9D3x01s)                |
+> 📌 A entrega principal da Fase 4 está documentada no vídeo "Parte 1 e Parte 2 (Entrega Final)". Os vídeos Ir Além 1 e Ir Além 2 apresentam funcionalidades complementares desenvolvidas além dos requisitos obrigatórios.
+
+| Entrega                                    | Link                                                               |
+| ------------------------------------------ | ------------------------------------------------------------------ |
+| Fase 2 — ESP32 + Wokwi                     | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
+| Fase 3 — Banco de dados                    | [Assistir no YouTube](https://youtu.be/jpHLyaU5JCU)                |
+| Fase 3.1 — Dashboard e ML                  | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM)                |
+| Fase 4 — Ir Além 1                         | [Assistir no YouTube](https://youtu.be/MsFykLMK8zw)                |
+| Fase 4 — Ir Além 2                         | [Assistir no YouTube](https://youtu.be/Y9oP9D3x01s)                |
+| Fase 4 — Parte 1 e Parte 2 (Entrega Final) | [Assistir no YouTube](SEU_LINK_AQUI)                               |
 
 ## Como executar
 
