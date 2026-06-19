@@ -436,10 +436,14 @@ Base com **200 registros simulados** ao longo de janeiro de 2025:
 📦 farmtech-solutions
  ┣ 📂 esp32
  ┃ ┗ 📄 sketch.ino                  → Código C/C++ do ESP32
+ ┣ 📂 dashboard
+ ┃ ┣ 📄 dashboard.py
+ ┃ ┣ 📄 sensores_farmtech_v2.csv
+ ┃ ┗ 📂 pages
+ ┃    ┣ 📄 2_🤖_ML_Regressao_Fase4.py
+ ┃    ┗ 📄 3_📈_IrAlem2_Tendencias.py
  ┣ 📂 python
  ┃ ┣ 📄 clima.py                    → Integração com API OpenWeather
- ┃ ┣ 📄 dashboard.py                → Dashboard Streamlit (Fase 3)
- ┃ ┗ 📄 sensores_farmtech_v2.csv    → Base de dados simulada (Fase 3)
  ┣ 📂 ML
  ┃ ┣ 📂 csvs
  ┃ ┃ ┗ 📄 sensores_farmtech_v2.csv  → Base de dados dos sensores
