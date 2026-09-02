@@ -76,14 +76,189 @@ A cultura escolhida foi o **café**, por ser relevante para o agronegócio brasi
 | Fase 3.1 — Dashboard e ML                  | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM)                |
 | Fase 4 — Ir Além 1                         | [Assistir no YouTube](https://youtu.be/MsFykLMK8zw)                |
 | Fase 4 — Ir Além 2                         | [Assistir no YouTube](https://youtu.be/Y9oP9D3x01s)                |
-| Fase 4 — Parte 1 e Parte 2 (Entrega Final) | [Assistir no YouTube](SEU_LINK_AQUI)                               |
-(revisar)
+| Fase 5 — Parte 1 (EDA)                     | [Assistir no YouTube](SEU_LINK_AQUI)                               |
+| Fase 5 — Parte 2 (AWS)                     | [Assistir no YouTube](SEU_LINK_AQUI)                               |
 
 ## Como executar
 
-## Entrega 1 — Machine Learning
+## Entrega 1 — EDA e Machine Learning
 
-> ⚠️ **Substituir este bloco** pelo conteúdo já desenvolvido pelo grupo na Entrega 1: análise exploratória do `crop_yield.csv`, clusterização/identificação de outliers, os cinco modelos preditivos de rendimento de safra (com métricas de avaliação) e os links do notebook Jupyter (`NomeCompleto_rmXXXXX_pbl_fase4.ipynb`) e do vídeo demonstrativo no YouTube.
+### Objetivo
+
+A Entrega 1 utiliza o dataset `crop_yield.csv` para desenvolver uma solução de **Machine Learning capaz de prever o rendimento agrícola (`Yield`)** a partir da cultura e de variáveis ambientais.
+
+O fluxo implementado no notebook `pbl_fase5.ipynb` cobre preparação dos dados, análise exploratória, investigação de outliers, clusterização, treinamento de cinco modelos de regressão, comparação por métricas e validação cruzada.
+
+### Dataset
+
+A base analisada possui **156 registros e 6 variáveis**, distribuídos igualmente entre quatro culturas, com **39 observações por cultura**:
+
+- `Cocoa, beans`;
+- `Oil palm fruit`;
+- `Rice, paddy`;
+- `Rubber, natural`.
+
+| Variável | Tipo | Papel |
+|---|---|---|
+| `Crop` | Categórica | Cultura agrícola |
+| `Precipitation (mm day-1)` | Numérica | Precipitação |
+| `Specific Humidity at 2 Meters (g/kg)` | Numérica | Umidade específica |
+| `Relative Humidity at 2 Meters (%)` | Numérica | Umidade relativa |
+| `Temperature at 2 Meters (C)` | Numérica | Temperatura |
+| `Yield` | Numérica | Variável-alvo de rendimento |
+
+A validação inicial confirmou que a base não possui valores ausentes, registros duplicados, valores infinitos, precipitação negativa, umidade específica negativa, umidade relativa fora da faixa de 0% a 100% ou `Yield` menor ou igual a zero.
+
+### Etapas realizadas
+
+1. preparação do ambiente e definição de `RANDOM_STATE = 42`;
+2. carregamento e validação do dataset;
+3. verificação da qualidade dos dados;
+4. estatística descritiva;
+5. análise exploratória dos dados (EDA);
+6. identificação e análise de outliers com IQR;
+7. clusterização com K-Means;
+8. preparação das variáveis para regressão;
+9. divisão estratificada em treino e teste;
+10. treinamento de cinco modelos de regressão;
+11. avaliação com MAE, RMSE e R²;
+12. validação cruzada com 5 folds;
+13. comparação entre valores reais e previstos;
+14. análise de importância das variáveis;
+15. análise das limitações e escolha do modelo final.
+
+### Principais resultados da EDA
+
+A análise exploratória mostrou que as quatro culturas possuem escalas de rendimento muito diferentes. As médias aproximadas de `Yield` foram:
+
+| Cultura | Yield médio aproximado |
+|---|---:|
+| `Oil palm fruit` | 175,8 mil |
+| `Rice, paddy` | 32,1 mil |
+| `Cocoa, beans` | 8,9 mil |
+| `Rubber, natural` | 7,8 mil |
+
+Também foram identificados **39 perfis ambientais únicos**, cada um repetido quatro vezes — uma vez para cada cultura. Isso indica que as culturas foram observadas sob os mesmos conjuntos de condições ambientais.
+
+Na correlação global, `Yield` apresenta baixa correlação linear com as variáveis ambientais. Porém, quando a análise é realizada por cultura, surgem relações mais claras, principalmente em `Rice, paddy` e `Rubber, natural`. Esse comportamento reforça que `Crop` é uma variável central para a modelagem.
+
+### Análise de outliers
+
+O método do **Intervalo Interquartil (IQR)** foi utilizado para investigar possíveis valores discrepantes.
+
+Quando `Yield` é analisado globalmente, o IQR sinaliza **35 potenciais outliers**. Entretanto, esse resultado é causado principalmente pela diferença estrutural de escala entre as culturas, especialmente por `Oil palm fruit`.
+
+Ao repetir o cálculo separadamente por cultura, o resultado é:
+
+- `Cocoa, beans`: 0 outliers de `Yield`;
+- `Oil palm fruit`: 0 outliers de `Yield`;
+- `Rice, paddy`: 0 outliers de `Yield`;
+- `Rubber, natural`: 0 outliers de `Yield`.
+
+Por isso, **nenhuma observação foi removida**. Os 156 registros originais foram preservados para as etapas seguintes.
+
+### Clusterização
+
+A clusterização foi realizada com **K-Means**, utilizando as variáveis ambientais padronizadas. A escolha do número de grupos considerou o método do cotovelo e o **Silhouette Score**.
+
+O melhor resultado foi obtido com:
+
+- **k = 3**;
+- Silhouette Score próximo de **0,40**.
+
+Os clusters representam três cenários ambientais distintos. A distribuição encontrada foi:
+
+| Cluster | Quantidade de registros |
+|---|---:|
+| 0 | 68 |
+| 1 | 44 |
+| 2 | 44 |
+
+A análise mostrou que o efeito desses cenários sobre o rendimento varia conforme a cultura. Portanto, os clusters ajudam a descrever padrões ambientais, mas não substituem a informação contida em `Crop`.
+
+### Preparação para a modelagem
+
+A variável-alvo foi definida como `Yield`. Para as variáveis de entrada:
+
+- `Crop` foi transformada com **OneHotEncoder**;
+- as variáveis numéricas foram padronizadas com **StandardScaler**;
+- o pré-processamento foi integrado aos modelos por meio de **Pipeline** e **ColumnTransformer**.
+
+A base foi dividida em **80% treino e 20% teste**, com estratificação por cultura:
+
+- treino: **124 registros**;
+- teste: **32 registros**;
+- cada cultura ficou com 31 registros no treino e 8 no teste.
+
+### Modelos avaliados
+
+Foram implementados cinco algoritmos de regressão:
+
+1. **Regressão Linear**;
+2. **Random Forest Regressor**;
+3. **Gradient Boosting Regressor**;
+4. **Support Vector Regression — SVR (RBF)**;
+5. **K-Nearest Neighbors Regressor — KNN**.
+
+### Resultado no conjunto de teste
+
+| Modelo | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Regressão Linear | 4.988,89 | 8.543,63 | 0,98 |
+| Random Forest | **4.632,55** | 9.569,82 | 0,98 |
+| Gradient Boosting | 5.892,41 | 9.993,33 | 0,98 |
+| SVR (RBF) | 12.506,41 | 18.228,57 | 0,93 |
+| KNN Regressor | 14.965,66 | 31.432,05 | 0,78 |
+
+Os três primeiros modelos apresentaram resultados muito próximos. Nesta divisão específica, a Regressão Linear obteve o menor RMSE, enquanto o Random Forest apresentou o menor MAE.
+
+### Validação cruzada
+
+Para reduzir a dependência de uma única divisão treino/teste, foi aplicada **validação cruzada com 5 folds**.
+
+| Modelo | R² médio | Desvio R² | MAE médio | RMSE médio |
+|---|---:|---:|---:|---:|
+| Gradient Boosting | 0,99 | 0,00 | 5.027,52 | 7.600,36 |
+| Random Forest | 0,99 | 0,01 | **4.297,35** | **7.591,18** |
+| Regressão Linear | 0,99 | 0,01 | 5.087,74 | 7.874,35 |
+| SVR (RBF) | 0,93 | 0,03 | 11.977,87 | 18.153,26 |
+| KNN Regressor | 0,82 | 0,08 | 14.320,86 | 29.256,18 |
+
+A validação cruzada confirma que **Gradient Boosting, Random Forest e Regressão Linear** são os modelos mais consistentes para esta base.
+
+### Modelo final escolhido
+
+O **Random Forest Regressor** foi escolhido como modelo final prático.
+
+A escolha considera em conjunto:
+
+- desempenho elevado;
+- menor MAE médio na validação cruzada;
+- menor RMSE médio entre os modelos avaliados na validação cruzada;
+- estabilidade entre diferentes partições dos dados;
+- possibilidade de analisar a importância das variáveis.
+
+A análise de importância também confirmou que a categoria `Oil palm fruit` domina grande parte das decisões do Random Forest, reforçando que a variável `Crop` explica uma parcela importante das diferenças de escala do rendimento.
+
+### Limitações
+
+Os resultados devem ser interpretados dentro das limitações do dataset:
+
+- apenas 156 observações;
+- somente 39 perfis ambientais únicos;
+- forte influência da variável `Crop`;
+- ausência de variáveis agrícolas como solo, fertilização, irrigação, pragas, manejo, variedade genética e radiação solar;
+- correlação, clusterização e importância de variáveis não demonstram causalidade.
+
+Assim, o modelo representa uma demonstração preditiva para o conjunto analisado e não deve ser entendido como uma solução universal para qualquer cenário agrícola.
+
+### Arquivos e demonstração
+
+- **Notebook principal:** [`pbl_fase5.ipynb`](./pbl_fase5.ipynb)
+- **Dataset:** `crop_yield.csv`
+- **Vídeo demonstrativo da Entrega 1:** *(inserir link do YouTube após a gravação)*
+
+> PS: O vídeo também estará disponível na aba de Vídeos Ilustrativos
 
 ---
 
