@@ -392,7 +392,7 @@ Este README é o entregável oficial da atividade. Como material de apoio, o gru
 
 **Vídeo (Entrega 2):** *(link do YouTube, não listado, demonstrando a comparação de recursos na calculadora AWS)*
 
-[---](https://youtu.be/GBc3RZIqcBU?is=woQ7ZAffXmdf_X3D)
+https://youtu.be/GBc3RZIqcBU?is=woQ7ZAffXmdf_X3D
 
 ## Referências
 
