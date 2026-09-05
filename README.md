@@ -76,7 +76,7 @@ A cultura escolhida foi o **café**, por ser relevante para o agronegócio brasi
 | Fase 3.1 — Dashboard e ML                  | [Assistir no YouTube](https://youtu.be/x8uJeT7SODM)                |
 | Fase 4 — Ir Além 1                         | [Assistir no YouTube](https://youtu.be/MsFykLMK8zw)                |
 | Fase 4 — Ir Além 2                         | [Assistir no YouTube](https://youtu.be/Y9oP9D3x01s)                |
-| Fase 5 — Parte 1 (EDA)                     | [Assistir no YouTube](SEU_LINK_AQUI)                               |
+| Fase 5 — Parte 1 (EDA)                     | [Assistir no YouTube](https://youtu.be/UYDfsGqZZzo)                               |
 | Fase 5 — Parte 2 (AWS)                     | [Assistir no YouTube](SEU_LINK_AQUI)                               |
 
 ## Como executar
