@@ -17,3 +17,6 @@ seaborn==0.13.2
 six==1.17.0
 statsmodels==0.14.6
 threadpoolctl==3.6.0
+flask==3.0.3
+oracledb==2.4.1
+gunicorn==22.0.0
