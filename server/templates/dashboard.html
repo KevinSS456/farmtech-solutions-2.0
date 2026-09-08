@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>FarmTech Solutions - Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f4;
+    margin: 0;
+    padding: 20px;
+    color: #222;
+  }
+  h1 {
+    text-align: center;
+    color: #2e7d32;
+  }
+  .cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px 30px;
+    text-align: center;
+    min-width: 160px;
+  }
+  .card h2 {
+    margin: 0;
+    font-size: 2em;
+    color: #2e7d32;
+  }
+  .card p {
+    margin: 5px 0 0;
+    color: #666;
+  }
+  .chart-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  #ultimaAtualizacao {
+    text-align: center;
+    color: #888;
+    margin-top: 15px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<h1>🌱 FarmTech Solutions - Monitoramento em Tempo Real</h1>
+
+<div class="cards">
+  <div class="card">
+    <h2 id="valTemperatura">--</h2>
+    <p>Temperatura (°C)</p>
+  </div>
+  <div class="card">
+    <h2 id="valUmidadeAr">--</h2>
+    <p>Umidade do Ar (%)</p>
+  </div>
+  <div class="card">
+    <h2 id="valUmidadeSolo">--</h2>
+    <p>Umidade do Solo (%)</p>
+  </div>
+</div>
+
+<div class="chart-container">
+  <canvas id="grafico" height="100"></canvas>
+</div>
+
+<p id="ultimaAtualizacao">Aguardando dados...</p>
+
+<script>
+const ctx = document.getElementById('grafico').getContext('2d');
+const grafico = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [
+      { label: 'Temperatura (°C)', data: [], borderColor: '#e53935', tension: 0.3 },
+      { label: 'Umidade do Ar (%)', data: [], borderColor: '#1e88e5', tension: 0.3 },
+      { label: 'Umidade do Solo (%)', data: [], borderColor: '#6d4c41', tension: 0.3 }
+    ]
+  },
+  options: {
+    responsive: true,
+    animation: false,
+    scales: { y: { beginAtZero: true } }
+  }
+});
+
+async function atualizarDados() {
+  try {
+    const resposta = await fetch('/api/dados');
+    const dados = await resposta.json();
+
+    if (!Array.isArray(dados) || dados.length === 0) return;
+
+    // A API retorna do mais recente para o mais antigo; invertemos para o gráfico
+    const dadosOrdenados = [...dados].reverse();
+
+    grafico.data.labels = dadosOrdenados.map(d => d.data_hora);
+    grafico.data.datasets[0].data = dadosOrdenados.map(d => d.temperatura);
+    grafico.data.datasets[1].data = dadosOrdenados.map(d => d.umidade_ar);
+    grafico.data.datasets[2].data = dadosOrdenados.map(d => d.umidade_solo);
+    grafico.update();
+
+    const maisRecente = dados[0];
+    document.getElementById('valTemperatura').textContent = maisRecente.temperatura ?? '--';
+    document.getElementById('valUmidadeAr').textContent = maisRecente.umidade_ar ?? '--';
+    document.getElementById('valUmidadeSolo').textContent = maisRecente.umidade_solo ?? '--';
+    document.getElementById('ultimaAtualizacao').textContent =
+      'Última atualização: ' + maisRecente.data_hora;
+
+  } catch (erro) {
+    console.error('Erro ao buscar dados:', erro);
+  }
+}
+
+atualizarDados();
+setInterval(atualizarDados, 5000); // atualiza a cada 5 segundos
+</script>
+
+</body>
+</html>
