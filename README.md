@@ -262,6 +262,48 @@ Assim, o modelo representa uma demonstração preditiva para o conjunto analisad
 
 ---
 
+## Ir Além 1 — ESP32 + Wi-Fi
+
+Como atividade **Ir Além**, foi desenvolvido um sistema IoT para a FarmTech Solutions utilizando um **ESP32 com comunicação Wi-Fi** e dois sensores: **DHT22**, responsável pela temperatura e umidade do ar, e um **sensor de umidade do solo**.
+
+O ESP32 coleta as leituras e envia os dados em formato **JSON**, via **HTTP POST**, para uma API desenvolvida em **Flask** e hospedada no **Render**. A API recebe as informações e as armazena diretamente no banco de dados. Em seguida, os dados são consultados pelo backend e renderizados nos templates do dashboard da aplicação.
+
+### Arquitetura
+
+```text
+DHT22 + Sensor de Umidade do Solo
+              │
+              ▼
+            ESP32
+              │
+            Wi-Fi
+              │
+              ▼
+       HTTP POST / JSON
+              │
+              ▼
+          API Flask
+              │
+              ▼
+       Banco de Dados
+              │
+              ▼
+          Dashboard
+```
+
+### Dashboard
+
+Os dados coletados pelos sensores podem ser visualizados diretamente no dashboard da FarmTech Solutions:
+
+👉 **[Acessar Dashboard FarmTech Solutions](https://farmtech-solutions-2-0.onrender.com/)**
+
+### Tecnologias
+
+**ESP32 · C/C++ · DHT22 · Sensor de umidade do solo · Wi-Fi · HTTP/HTTPS · JSON · Python · Flask · Banco de Dados · HTML · Render · Wokwi**
+
+
+---
+
 ## Entrega 2 — Computação em Nuvem
 
 ### Contexto
