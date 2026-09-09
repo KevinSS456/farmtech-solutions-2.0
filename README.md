@@ -435,7 +435,7 @@ umidade, temp.         sa-east-1             dos dados             de safra
 
 ## Apresentação visual complementar
 
-Este README é o entregável oficial da atividade. Como material de apoio, o grupo também desenvolveu uma apresentação visual em HTML com o mesmo conteúdo, disponível em [`FarmTech_FIAP_Calculadora_AWS.html`](./aws/FarmTech_FIAP_Calculadora_AWS.html).
+Este README é o entregável oficial da atividade. Como material de apoio, o grupo também desenvolveu uma apresentação visual em HTML com o mesmo conteúdo, disponível em [`FarmTech_FIAP_Calculadora_AWS.html`](./aws/FarmTech_FIAP_Calculadora_AWS.md).
 
 **Vídeo (Entrega 2):** *(link do YouTube, não listado, demonstrando a comparação de recursos na calculadora AWS)*
 
