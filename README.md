@@ -338,7 +338,7 @@ A **t3.micro** foi selecionada por atender simultaneamente aos requisitos mínim
 ![Comparação de custo mensal entre regiões](./assets/grafico-custo.png)
 
 **Figura 1 — AWS Pricing Calculator: us-east-1**
-`![Figura 1 — AWS Pricing Calculator us-east-1](./assets/print-us-east-1.png)`
+![Figura 1 — AWS Pricing Calculator us-east-1](./assets/print-us-east-1.png)
 
 **Figura 2 — AWS Pricing Calculator: sa-east-1**
 
