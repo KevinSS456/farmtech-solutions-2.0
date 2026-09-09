@@ -67,8 +67,6 @@ A cultura escolhida foi o **café**, por ser relevante para o agronegócio brasi
 
 ## Vídeos demonstrativos
 
-> 📌 A entrega principal da Fase 4 está documentada no vídeo "Parte 1 e Parte 2 (Entrega Final)". Os vídeos Ir Além 1 e Ir Além 2 apresentam funcionalidades complementares desenvolvidas além dos requisitos obrigatórios. (revisar)
-
 | Entrega                                    | Link                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------ |
 | Fase 2 — ESP32 + Wokwi                     | [Assistir no YouTube](https://www.youtube.com/watch?v=OxzF6pPU_3E) |
@@ -77,7 +75,8 @@ A cultura escolhida foi o **café**, por ser relevante para o agronegócio brasi
 | Fase 4 — Ir Além 1                         | [Assistir no YouTube](https://youtu.be/MsFykLMK8zw)                |
 | Fase 4 — Ir Além 2                         | [Assistir no YouTube](https://youtu.be/Y9oP9D3x01s)                |
 | Fase 5 — Parte 1 (EDA)                     | [Assistir no YouTube](https://youtu.be/UYDfsGqZZzo)                               |
-| Fase 5 — Parte 2 (AWS)                     | [Assistir no YouTube](SEU_LINK_AQUI)                               |
+| Fase 5 — Parte 2 (AWS)                     | [Assistir no YouTube](https://youtu.be/GBc3RZIqcBU?is=woQ7ZAffXmdf_X3D)                               |
+| Fase 5 — Ir Além 1 (ESP32 + Wi-Fi)                     | [Assistir no YouTube](https://youtu.be/zwtIUu072BI)                               |
 
 ## Como executar
 
@@ -256,7 +255,8 @@ Assim, o modelo representa uma demonstração preditiva para o conjunto analisad
 
 - **Notebook principal:** [`pbl_fase5.ipynb`](./pbl_fase5.ipynb)
 - **Dataset:** `crop_yield.csv`
-- **Vídeo demonstrativo da Entrega 1:** *(inserir link do YouTube após a gravação)*
+- **Vídeo demonstrativo da Entrega 1:** *([EDA e MACHINE LEARNING](https://youtu.be/UYDfsGqZZzo))*
+
 
 > PS: O vídeo também estará disponível na aba de Vídeos Ilustrativos
 
@@ -301,6 +301,11 @@ Os dados coletados pelos sensores podem ser visualizados diretamente no dashboar
 
 **ESP32 · C/C++ · DHT22 · Sensor de umidade do solo · Wi-Fi · HTTP/HTTPS · JSON · Python · Flask · Banco de Dados · HTML · Render · Wokwi**
 
+**Vídeo (Ir Além 1):** *(link do YouTube, não listado, demonstrando o que foi realizado em nosso ir além 1)*
+
+https://youtu.be/zwtIUu072BI
+
+> PS: O vídeo também estará disponível na aba de Vídeos Ilustrativos
 
 ---
 
@@ -335,14 +340,14 @@ A **t3.micro** foi selecionada por atender simultaneamente aos requisitos mínim
 | São Paulo (sa-east-1) | **US$ 19,86** ✅ *(confirmado via print)* |
 | **Diferença** | **US$ 8,27/mês** (São Paulo é ~71% mais cara) |
 
-![Comparação de custo mensal entre regiões](./assets/grafico-custo.png)
+![Comparação de custo mensal entre regiões](./aws/assets/grafico-custo.png)
 
 **Figura 1 — AWS Pricing Calculator: us-east-1**
-![Figura 1 — AWS Pricing Calculator us-east-1](./assets/print-us-east-1.png)
+![Figura 1 — AWS Pricing Calculator us-east-1](./aws/assets/print-us-east-1.png)
 
 **Figura 2 — AWS Pricing Calculator: sa-east-1**
 
-![Figura 2 — AWS Pricing Calculator sa-east-1](./assets/print-sa-east-1.png)
+![Figura 2 — AWS Pricing Calculator sa-east-1](./aws/assets/print-sa-east-1.png)
 
 Valores estimados utilizando a AWS Pricing Calculator, modelo On-Demand (100%), Linux/Unix, EC2 t3.micro e EBS gp3 de 50 GB. O valor de São Paulo foi confirmado diretamente na calculadora (US$ 19,86/mês); o de N. Virgínia o valor foi de US$ 11,59, mas a decisão não deve ser tomada apenas pelo menor preço.
 
@@ -353,7 +358,7 @@ Valores estimados utilizando a AWS Pricing Calculator, modelo On-Demand (100%), 
 | São Paulo (sa-east-1) | ~15 ms |
 | N. Virgínia (us-east-1) | ~135 ms |
 
-![Latência estimada por região](./assets/grafico-latencia.png)
+![Latência estimada por região](./aws/assets/grafico-latencia.png)
 
 Para IoT agrícola, distância física vira tempo de resposta: cada leitura de sensor e cada decisão automatizada de irrigação depende de ida e volta rápida entre o campo e a API.
 
@@ -430,11 +435,13 @@ umidade, temp.         sa-east-1             dos dados             de safra
 
 ## Apresentação visual complementar
 
-Este README é o entregável oficial da atividade. Como material de apoio, o grupo também desenvolveu uma apresentação visual em HTML com o mesmo conteúdo, disponível em [`FarmTech_FIAP_Calculadora_AWS_v2.html`](./FarmTech_FIAP_Calculadora_AWS_v2.html).
+Este README é o entregável oficial da atividade. Como material de apoio, o grupo também desenvolveu uma apresentação visual em HTML com o mesmo conteúdo, disponível em [`FarmTech_FIAP_Calculadora_AWS_v2.html`](./aws/FarmTech_FIAP_Calculadora_AWS_v2.html).
 
 **Vídeo (Entrega 2):** *(link do YouTube, não listado, demonstrando a comparação de recursos na calculadora AWS)*
 
 https://youtu.be/GBc3RZIqcBU?is=woQ7ZAffXmdf_X3D
+
+> PS: O vídeo também estará disponível na aba de Vídeos Ilustrativos
 
 ## Referências
 
