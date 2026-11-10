@@ -1,136 +1,663 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>FarmTech Solutions - Dashboard</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmTech Solutions | Monitoramento Inteligente</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f4;
-    margin: 0;
-    padding: 20px;
-    color: #222;
+:root {
+  --green: #238636;
+  --dark-green: #17652a;
+  --light-green: #e9f7ed;
+  --bg: #f3f6f3;
+  --white: #fff;
+  --text: #202b24;
+  --muted: #778179;
+  --border: #e5ebe5;
+  --blue: #2775c7;
+  --red: #d94b4b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--dark-green);
+  font-size: 27px;
+}
+
+.brand p {
+  color: var(--muted);
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+.system-status {
+  background: var(--light-green);
+  color: var(--dark-green);
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.section-title {
+  margin: 30px 0 15px;
+  font-size: 18px;
+}
+
+.cards, .npk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card, .npk-card, .automation-card, .chart-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 23px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.035);
+}
+
+.card-label {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.card-value {
+  font-size: 31px;
+  font-weight: bold;
+}
+
+.card-unit {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.card-description {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.npk-card {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.npk-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--light-green);
+  color: var(--dark-green);
+  font-size: 22px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.npk-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.npk-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 9px;
+}
+
+.active {
+  background: #e5f6e9;
+  color: #207a36;
+}
+
+.inactive {
+  background: #fceaea;
+  color: #b63838;
+}
+
+.pending {
+  background: #f0f1f0;
+  color: #68716a;
+}
+
+.automation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.automation-card h3 {
+  margin: 0 0 14px;
+  font-size: 15px;
+}
+
+.automation-value {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.automation-description {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.chart-card h3 {
+  margin: 0 0 20px;
+  font-size: 16px;
+}
+
+.chart-wrapper {
+  height: 300px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 25px 0 5px;
+}
+
+@media (max-width: 800px) {
+  body { padding: 18px; }
+  .cards, .npk-grid, .automation-grid {
+    grid-template-columns: 1fr;
   }
-  h1 {
-    text-align: center;
-    color: #2e7d32;
-  }
-  .cards {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 30px 0;
-  }
-  .card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 20px 30px;
-    text-align: center;
-    min-width: 160px;
-  }
-  .card h2 {
-    margin: 0;
-    font-size: 2em;
-    color: #2e7d32;
-  }
-  .card p {
-    margin: 5px 0 0;
-    color: #666;
-  }
-  .chart-container {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  #ultimaAtualizacao {
-    text-align: center;
-    color: #888;
-    margin-top: 15px;
-    font-size: 0.9em;
-  }
+}
 </style>
 </head>
-<body>
 
-<h1>🌱 FarmTech Solutions - Monitoramento em Tempo Real</h1>
+<body>
+<div class="container">
+
+<header>
+  <div class="brand">
+    <h1>🌱 FarmTech Solutions</h1>
+    <p>Monitoramento inteligente e automação agrícola</p>
+  </div>
+
+  <div class="system-status" id="statusSistema">
+    ● Conectando ao sistema
+  </div>
+</header>
+
+<!-- INDICADORES AMBIENTAIS -->
+<h2 class="section-title">Visão geral da plantação</h2>
 
 <div class="cards">
+
   <div class="card">
-    <h2 id="valTemperatura">--</h2>
-    <p>Temperatura (°C)</p>
+    <div class="card-label">Temperatura</div>
+    <div class="card-value">
+      <span id="temperatura">--</span>
+      <span class="card-unit">°C</span>
+    </div>
+    <div class="card-description">Temperatura ambiente</div>
   </div>
+
   <div class="card">
-    <h2 id="valUmidadeAr">--</h2>
-    <p>Umidade do Ar (%)</p>
+    <div class="card-label">Umidade do ar</div>
+    <div class="card-value">
+      <span id="umidadeAr">--</span>
+      <span class="card-unit">%</span>
+    </div>
+    <div class="card-description">Umidade relativa do ambiente</div>
   </div>
+
   <div class="card">
-    <h2 id="valUmidadeSolo">--</h2>
-    <p>Umidade do Solo (%)</p>
+    <div class="card-label">Umidade do solo</div>
+    <div class="card-value">
+      <span id="umidadeSolo">--</span>
+      <span class="card-unit">%</span>
+    </div>
+    <div class="card-description">Leitura simulada pelo potenciômetro</div>
+  </div>
+
+</div>
+
+<!-- NPK -->
+<h2 class="section-title">Nutrientes do solo — NPK</h2>
+
+<div class="npk-grid">
+
+  <div class="npk-card">
+    <div class="npk-icon">N</div>
+    <div>
+      <div class="npk-name">Nitrogênio</div>
+      <div class="npk-subtitle">Desenvolvimento vegetativo</div>
+      <span class="badge pending" id="nitrogenio">
+        Aguardando dados
+      </span>
+    </div>
+  </div>
+
+  <div class="npk-card">
+    <div class="npk-icon">P</div>
+    <div>
+      <div class="npk-name">Fósforo</div>
+      <div class="npk-subtitle">Raízes e desenvolvimento</div>
+      <span class="badge pending" id="fosforo">
+        Aguardando dados
+      </span>
+    </div>
+  </div>
+
+  <div class="npk-card">
+    <div class="npk-icon">K</div>
+    <div>
+      <div class="npk-name">Potássio</div>
+      <div class="npk-subtitle">Regulação e resistência</div>
+      <span class="badge pending" id="potassio">
+        Aguardando dados
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<!-- AUTOMAÇÃO -->
+<h2 class="section-title">Automação de irrigação</h2>
+
+<div class="automation-grid">
+
+  <div class="automation-card">
+    <h3>Previsão de chuva</h3>
+    <div class="automation-value" id="previsaoChuva">
+      Aguardando dados
+    </div>
+    <div class="automation-description">
+      Condição climática considerada pela automação
+    </div>
+  </div>
+
+  <div class="automation-card">
+    <h3>Bomba de irrigação</h3>
+    <div class="automation-value" id="bomba">
+      Aguardando dados
+    </div>
+    <div class="automation-description">
+      Estado atual do sistema de irrigação
+    </div>
+  </div>
+
+</div>
+
+<!-- HISTÓRICO -->
+<h2 class="section-title">Histórico de monitoramento</h2>
+
+<div class="chart-card">
+  <h3>Variação dos indicadores ambientais</h3>
+  <div class="chart-wrapper">
+    <canvas id="grafico"></canvas>
   </div>
 </div>
 
-<div class="chart-container">
-  <canvas id="grafico" height="100"></canvas>
-</div>
+<footer>
+  FarmTech Solutions • Última atualização:
+  <span id="ultimaAtualizacao">Aguardando dados...</span>
+  <br><br>
+  Dados atualizados automaticamente a cada 5 segundos.
+</footer>
 
-<p id="ultimaAtualizacao">Aguardando dados...</p>
+</div>
 
 <script>
-const ctx = document.getElementById('grafico').getContext('2d');
-const grafico = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [
-      { label: 'Temperatura (°C)', data: [], borderColor: '#e53935', tension: 0.3 },
-      { label: 'Umidade do Ar (%)', data: [], borderColor: '#1e88e5', tension: 0.3 },
-      { label: 'Umidade do Solo (%)', data: [], borderColor: '#6d4c41', tension: 0.3 }
-    ]
-  },
-  options: {
-    responsive: true,
-    animation: false,
-    scales: { y: { beginAtZero: true } }
+
+// ======================================================
+// CONFIGURAÇÃO DO GRÁFICO
+// ======================================================
+
+const grafico = new Chart(
+  document.getElementById('grafico'),
+  {
+    type: 'line',
+
+    data: {
+      labels: [],
+
+      datasets: [
+        {
+          label: 'Temperatura (°C)',
+          data: [],
+          borderColor: '#e05252',
+          backgroundColor: '#e05252',
+          tension: 0.3
+        },
+        {
+          label: 'Umidade do ar (%)',
+          data: [],
+          borderColor: '#2775c7',
+          backgroundColor: '#2775c7',
+          tension: 0.3
+        },
+        {
+          label: 'Umidade do solo (%)',
+          data: [],
+          borderColor: '#238636',
+          backgroundColor: '#238636',
+          tension: 0.3
+        }
+      ]
+    },
+
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
+
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      },
+
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
   }
-});
+);
 
-async function atualizarDados() {
-  try {
-    const resposta = await fetch('/api/dados');
-    const dados = await resposta.json();
 
-    if (!Array.isArray(dados) || dados.length === 0) return;
+// ======================================================
+// INTERPRETAÇÃO DOS ESTADOS
+// ======================================================
 
-    // A API retorna do mais recente para o mais antigo; invertemos para o gráfico
-    const dadosOrdenados = [...dados].reverse();
+function interpretarEstado(valor) {
 
-    grafico.data.labels = dadosOrdenados.map(d => d.data_hora);
-    grafico.data.datasets[0].data = dadosOrdenados.map(d => d.temperatura);
-    grafico.data.datasets[1].data = dadosOrdenados.map(d => d.umidade_ar);
-    grafico.data.datasets[2].data = dadosOrdenados.map(d => d.umidade_solo);
-    grafico.update();
+  if (valor === true || valor === 1) return true;
+  if (valor === false || valor === 0) return false;
 
-    const maisRecente = dados[0];
-    document.getElementById('valTemperatura').textContent = maisRecente.temperatura ?? '--';
-    document.getElementById('valUmidadeAr').textContent = maisRecente.umidade_ar ?? '--';
-    document.getElementById('valUmidadeSolo').textContent = maisRecente.umidade_solo ?? '--';
-    document.getElementById('ultimaAtualizacao').textContent =
-      'Última atualização: ' + maisRecente.data_hora;
+  if (typeof valor === 'string') {
 
-  } catch (erro) {
-    console.error('Erro ao buscar dados:', erro);
+    const texto = valor.trim().toUpperCase();
+
+    if (['ATIVO', 'SIM', 'LIGADA', 'TRUE', '1'].includes(texto)) {
+      return true;
+    }
+
+    if (['INATIVO', 'NÃO', 'NAO', 'DESLIGADA', 'FALSE', '0'].includes(texto)) {
+      return false;
+    }
+  }
+
+  return null;
+}
+
+
+// ======================================================
+// ATUALIZAÇÃO DOS BADGES NPK
+// ======================================================
+
+function atualizarBadge(id, valor) {
+
+  const elemento = document.getElementById(id);
+  const estado = interpretarEstado(valor);
+
+  elemento.className = 'badge';
+
+  if (estado === true) {
+
+    elemento.textContent = 'ATIVO';
+    elemento.classList.add('active');
+
+  } else if (estado === false) {
+
+    elemento.textContent = 'INATIVO';
+    elemento.classList.add('inactive');
+
+  } else {
+
+    elemento.textContent = 'Aguardando dados';
+    elemento.classList.add('pending');
   }
 }
 
-atualizarDados();
-setInterval(atualizarDados, 5000); // atualiza a cada 5 segundos
-</script>
 
+// ======================================================
+// ATUALIZAÇÃO DA PREVISÃO E DA BOMBA
+// ======================================================
+
+function atualizarTextoEstado(
+  id,
+  valor,
+  positivo,
+  negativo
+) {
+
+  const elemento = document.getElementById(id);
+  const estado = interpretarEstado(valor);
+
+  if (estado === true) {
+
+    elemento.textContent = positivo;
+    elemento.style.color = '#238636';
+
+  } else if (estado === false) {
+
+    elemento.textContent = negativo;
+    elemento.style.color = '#d94b4b';
+
+  } else {
+
+    elemento.textContent = 'Aguardando dados';
+    elemento.style.color = '#778179';
+  }
+}
+
+
+// ======================================================
+// CONVERSÃO DA DATA DO ORACLE
+// Formato recebido: DD/MM/YYYY HH:mm:ss
+// ======================================================
+
+function converterData(data) {
+
+  if (!data) return null;
+
+  const partes = data.match(
+    /^(\d{2})\/(\d{2})\/(\d{4}) (\d{2}):(\d{2}):(\d{2})$/
+  );
+
+  if (!partes) return null;
+
+  return new Date(
+    Number(partes[3]),
+    Number(partes[2]) - 1,
+    Number(partes[1]),
+    Number(partes[4]),
+    Number(partes[5]),
+    Number(partes[6])
+  );
+}
+
+
+// ======================================================
+// CONSULTA À API FLASK
+// ======================================================
+
+async function atualizarDados() {
+
+  try {
+
+    const resposta = await fetch('/api/dados');
+
+    if (!resposta.ok) {
+      throw new Error('Falha ao consultar a API');
+    }
+
+    const dados = await resposta.json();
+
+    if (!Array.isArray(dados) || dados.length === 0) {
+
+      document.getElementById('statusSistema').textContent =
+        '● Aguardando registros';
+
+      return;
+    }
+
+    // API retorna do mais recente para o mais antigo.
+    const ordenados = [...dados].reverse();
+
+    const recente = dados[0];
+
+
+    // --------------------------------------------------
+    // INDICADORES AMBIENTAIS
+    // --------------------------------------------------
+
+    document.getElementById('temperatura').textContent =
+      recente.temperatura ?? '--';
+
+    document.getElementById('umidadeAr').textContent =
+      recente.umidade_ar ?? '--';
+
+    document.getElementById('umidadeSolo').textContent =
+      recente.umidade_solo ?? '--';
+
+
+    // --------------------------------------------------
+    // NUTRIENTES NPK
+    // --------------------------------------------------
+
+    atualizarBadge(
+      'nitrogenio',
+      recente.estado_n
+    );
+
+    atualizarBadge(
+      'fosforo',
+      recente.estado_p
+    );
+
+    atualizarBadge(
+      'potassio',
+      recente.estado_k
+    );
+
+
+    // --------------------------------------------------
+    // PREVISÃO DE CHUVA E BOMBA
+    // --------------------------------------------------
+
+    atualizarTextoEstado(
+      'previsaoChuva',
+      recente.previsao_chuva,
+      'CHUVA PREVISTA',
+      'SEM PREVISÃO DE CHUVA'
+    );
+
+    atualizarTextoEstado(
+      'bomba',
+      recente.bomba_irrigacao,
+      'LIGADA',
+      'DESLIGADA'
+    );
+
+
+    // --------------------------------------------------
+    // HISTÓRICO DOS INDICADORES
+    // --------------------------------------------------
+
+    grafico.data.labels = ordenados.map(d => {
+
+      const data = converterData(d.data_hora);
+
+      return data
+        ? data.toLocaleTimeString('pt-BR')
+        : '--';
+    });
+
+    grafico.data.datasets[0].data =
+      ordenados.map(d => d.temperatura);
+
+    grafico.data.datasets[1].data =
+      ordenados.map(d => d.umidade_ar);
+
+    grafico.data.datasets[2].data =
+      ordenados.map(d => d.umidade_solo);
+
+    grafico.update();
+
+
+    // --------------------------------------------------
+    // ÚLTIMA ATUALIZAÇÃO
+    // --------------------------------------------------
+
+    document.getElementById('ultimaAtualizacao').textContent =
+      recente.data_hora ?? 'Horário não informado';
+
+    document.getElementById('statusSistema').textContent =
+      '● Sistema conectado';
+
+  } catch (erro) {
+
+    console.error('Erro ao buscar dados:', erro);
+
+    document.getElementById('statusSistema').textContent =
+      '● Não foi possível atualizar';
+  }
+}
+
+
+// ======================================================
+// INICIALIZAÇÃO E ATUALIZAÇÃO AUTOMÁTICA
+// ======================================================
+
+atualizarDados();
+
+setInterval(atualizarDados, 5000);
+
+</script>
 </body>
 </html>
